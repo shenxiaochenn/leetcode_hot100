@@ -28,30 +28,33 @@
 
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        m  = len(grid)
+        m = len(grid)
         n = len(grid[0])
         q = deque()
-        fresh = 0 
+        fresh = 0
         for i in range(m):
             for j in range(n):
-                if grid[i][j] ==2:
-                    q.append((i,j))
-                if grid[i][j] ==1:
+                if grid[i][j]==1:
                     fresh+=1
-        if fresh ==0:
+                if grid[i][j]==2:
+                    q.append((i,j)) 
+        if fresh==0:
             return 0
-        minutes = 0 
-        dirs = [(0,1), (0,-1), (1,0), (-1,0)]
-        while q and fresh > 0:
+        minunutes =0
+        dir_ = [(0,1),(0,-1),(1,0),(-1,0)]
+        while q and fresh>0:
             size = len(q)
             for _ in range(size):
-                r,c = q.popleft()
-                for dr,dc in dirs:
-                    nr,nc =  r+dr,c+dc
-                    if 0<=nr<m and  0<=nc<n and grid[nr][nc] ==1:
-                        grid[nr][nc] = 2 
+                r,c =q.popleft()
+                for dr,dc in dir_:
+                    dir_r,dir_c=r+dr,c+dc
+                    if  0<=dir_r<m and 0<=dir_c<n and grid[dir_r][dir_c]==1:
                         fresh-=1
-                        q.append((nr,nc))
-            minutes+=1
-        return minutes if fresh==0 else -1 
+                        q.append((dir_r,dir_c))
+                        grid[dir_r][dir_c]=2
+            minunutes+=1
+        return minunutes if fresh==0 else -1
+
+# 记忆方法：这题条件种类非常多，4个初始化可以和dir_的初始联系在一起记忆！ while -> size -> for -> r,c -> for ->  33(3条件和3操作)
+
 
