@@ -53,3 +53,7 @@ class Trie:
         return True                          # 前缀不看井号
 
 #记忆方法：走字母建字典，走完打井号；查字母能走通，单词还得看井号；前缀只要走得通。
+# aa = Trie()
+# aa.insert("appp")
+# aa.root
+# {'a': {'p': {'p': {'p': {'#': True}}}}}
