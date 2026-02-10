@@ -31,4 +31,5 @@ class Solution:
                 r-=1
                 max_right = max(max_right,height[r])
         return ans                  
-# 记忆法：双指针  谁的最大边界更低就处理谁：更新该侧 max，再加 max - height，指针向内走
+# 记忆法：双指针  谁的最大边界更低就处理谁：更新该侧 max，再加 max - height，指针向内走。
+# 易错点： 条件应该是l<r ，如果是 <= 再进去岂不是越界了？
