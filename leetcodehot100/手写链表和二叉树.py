@@ -35,3 +35,22 @@ def build_tree(arr):
 # 记忆要点： 用到setattr,队列更新！i从1开始
 
 
+
+
+
+
+def build_tree(arr):
+    if not arr or arr[0] == None:
+        return None
+    root = TreeNode(arr[0])
+    i = 1
+    q = deque([root])
+    while q and i<len(arr):
+        node = q.popleft()
+        for side in ("left","right"):
+            if i<len(arr) and arr[i] is not None:
+                child = TreeNode(arr[i])
+                setattr(node,side,child)
+                q.append(child)
+            i+=1
+    return root 
