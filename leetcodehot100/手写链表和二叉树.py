@@ -40,15 +40,15 @@ def build_tree(arr):
 
 
 def build_tree(arr):
-    if not arr or arr[0] == None:
+    if not arr or arr[0] is None:
         return None
     root = TreeNode(arr[0])
     i = 1
     q = deque([root])
-    while q and i<len(arr):
+    while q and i < len(arr):
         node = q.popleft()
         for side in ("left","right"):
-            if i<len(arr) and arr[i] is not None:
+            if i < len(arr) and arr[i] is not None:
                 child = TreeNode(arr[i])
                 setattr(node,side,child)
                 q.append(child)
